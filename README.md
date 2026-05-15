@@ -1,10 +1,11 @@
-# D.S. Filippov
-### Project Manager & Construction Engineer
+# DANIL FILIPPOV
+**Construction Engineer | Project Manager**
 
-Добро пожаловать в мой профиль. Здесь вы найдете информацию о моей профессиональной деятельности и текущих проектах.
+Construction professional with a Master's degree in Civil Engineering. Specialized in project management, sustainable construction technologies (CLT), and building-integrated systems.
 
 ---
 
-## 📇 Онлайн-визитка
-Посетите мою персональную страницу для быстрого доступа к контактам и социальным сетям:
-👉 **[gonilas.github.io/CV](https://gonilas.github.io/CV)**
+### 📇 Contact & Professional Profile
+Access my full professional profile, including CV, WeChat, and LinkedIn via the link below:
+
+👉 **[Online Business Card](https://gonilas.github.io/CV)**
