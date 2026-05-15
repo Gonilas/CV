@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <!-- Тег для окрашивания панели браузера (Safari iOS, Chrome Android) -->
-  <meta name="theme-color" content="#163659">
+  
+  <meta name="theme-color" content="#163659" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#163659" media="(prefers-color-scheme: dark)">
   
   <title>Danil Filippov</title>
   <meta name="description" content="Engineer from Russia, currently in China. Open to short-term opportunities.">
@@ -38,14 +39,11 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
-    html, body {
+    /* КРИТИЧЕСКИЙ БЛОК ДЛЯ ОКРАШИВАНИЯ SAFARI */
+    html {
+      background-color: var(--navy-deep); /* Safari берет цвет отсюда */
       height: 100%;
-      margin: 0;
-      padding: 0;
-      overflow: hidden; /* Отключает прокрутку всей страницы */
-      display: flex;
-      flex-direction: column;
-      background-color: var(--navy-deep); /* Цвет для зон overscroll */
+      overflow: hidden;
     }
 
     body {
@@ -53,8 +51,10 @@
       font-size: 15px;
       line-height: 1.5;
       color: var(--text);
-      background: var(--bg);
-      height: 100dvh; /* Динамическая высота для мобильных */
+      background: var(--bg); /* Контент белый, но под ним navy-deep через html */
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -136,16 +136,12 @@
       font-size: 0.9rem;
       font-weight: 500;
       text-decoration: none;
-      cursor: pointer;
-      border: none;
-      transition: background 0.15s, box-shadow 0.15s, transform 0.15s;
-      font-family: inherit;
       background: var(--navy);
       color: white;
       box-shadow: var(--shadow-md);
+      transition: all 0.15s;
     }
     .btn:hover { background: var(--navy-deep); box-shadow: var(--shadow-lg); }
-    .btn:active { transform: translateY(1px); }
     .btn svg { width: 18px; height: 18px; }
 
     /* ============ ABOUT ============ */
@@ -164,13 +160,8 @@
       max-width: 520px;
       margin: 0 auto;
     }
-    .about-text p {
-      margin-bottom: 12px;
-    }
-    .highlight-text {
-      font-weight: 700;
-      color: var(--navy);
-    }
+    .about-text p { margin-bottom: 0; }
+    .highlight-text { font-weight: 700; color: var(--navy); }
 
     /* ============ CONTACT ============ */
     .contact {
@@ -196,29 +187,17 @@
       text-decoration: none;
       font-size: 0.82rem;
       font-weight: 500;
-      transition: background 0.15s, border-color 0.15s;
+      transition: all 0.15s;
       min-width: 0;
-      cursor: pointer;
     }
     .contact-item:hover {
       background: rgba(255,255,255,0.13);
       border-color: rgba(255,255,255,0.25);
     }
-    .contact-item svg {
-      width: 16px;
-      height: 16px;
-      flex-shrink: 0;
-    }
-    .contact-item span {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+    .contact-item svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .contact-item span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .contact-item.full { grid-column: 1 / -1; }
-    
-    .contact-item.center-content {
-      justify-content: center;
-    }
+    .contact-item.center-content { justify-content: center; }
 
     /* ============ FOOTER ============ */
     footer {
@@ -230,7 +209,7 @@
       flex-shrink: 0;
     }
 
-    /* ============ WECHAT MODAL ============ */
+    /* ============ MODAL ============ */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -245,10 +224,7 @@
       opacity: 0;
       transition: opacity 0.2s ease;
     }
-    .modal-overlay.active {
-      display: flex;
-      opacity: 1;
-    }
+    .modal-overlay.active { display: flex; opacity: 1; }
     .modal-card {
       background: #FFFFFF;
       border-radius: 16px;
@@ -261,53 +237,28 @@
       transform: translateY(20px);
       transition: transform 0.2s ease;
     }
-    .modal-overlay.active .modal-card {
-      transform: translateY(0);
-    }
+    .modal-overlay.active .modal-card { transform: translateY(0); }
     .close-modal {
       position: absolute;
-      top: 12px;
-      right: 16px;
-      font-size: 24px;
-      color: #999;
+      top: 12px; right: 16px;
+      font-size: 24px; color: #999;
       cursor: pointer;
-      line-height: 1;
-      transition: color 0.2s;
     }
-    .close-modal:hover { color: #333; }
-    .modal-card img {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 24px;
-      border: 1px solid var(--border);
-    }
-    .modal-card h3 {
-      color: var(--navy);
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 6px;
-    }
-    .modal-card p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
+    .modal-card img { width: 100%; border-radius: 12px; margin-bottom: 24px; border: 1px solid var(--border); }
+    .modal-card h3 { color: var(--navy); font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+    .modal-card p { color: var(--text-muted); font-size: 0.9rem; }
 
-    /* ============ RESPONSIVE TWEAKS ============ */
+    /* ============ MEDIA ============ */
     @media (min-width: 720px) {
       .hero { padding: 40px 0 20px; }
-      .photo { width: 140px; height: 140px; margin-bottom: 20px; }
+      .photo { width: 140px; height: 140px; }
       .hero h1 { font-size: 2.2rem; }
       .contact-grid { max-width: 600px; margin: 0 auto; }
     }
-
     @media (max-height: 700px) {
       .photo { width: 80px; height: 80px; }
       .hero h1 { font-size: 1.3rem; }
-      .contact-grid { gap: 4px; }
-      .contact-item { padding: 8px 10px; }
-      .tagline { margin-bottom: 8px; }
-      .badge { margin-bottom: 8px; }
+      .tagline, .badge { margin-bottom: 8px; }
     }
   </style>
 </head>
@@ -322,14 +273,13 @@
       <span class="badge">Open to international opportunities</span>
       
       <div class="hero-buttons">
-        <a href="Filippov_Danil_Resume.pdf" class="btn" target="_blank" rel="noopener">
+        <a href="Filippov_Danil_Resume.pdf" class="btn" target="_blank">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
           </svg>
           View resume
         </a>
-        <a href="https://www.linkedin.com/in/filippovds/" class="btn" target="_blank" rel="noopener">
+        <a href="https://www.linkedin.com/in/filippovds/" class="btn" target="_blank">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
           </svg>
@@ -342,8 +292,7 @@
   <section class="about">
     <div class="container">
       <div class="about-text">
-        <p>Originally from Russia, currently in China.<br>My background mixes engineering, hands-on technical work, and big international projects.<br>
-        <span class="highlight-text">Open to any opportunity.</span>
+        <p>Originally from Russia, currently in China.<br>My background mixes engineering, hands-on technical work, and big international projects.<br><span class="highlight-text">Open to any opportunity.</span></p>
       </div>
     </div>
   </section>
@@ -351,34 +300,28 @@
   <section class="contact">
     <div class="container">
       <div class="contact-grid">
-
         <a href="mailto:Gonilas@gmail.com" class="contact-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           <span>Gonilas@gmail.com</span>
         </a>
-
         <a href="tel:+8615063370375" class="contact-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           <span>+86 150 6337 0375</span>
         </a>
-
-        <a href="https://t.me/gonilas" target="_blank" rel="noopener" class="contact-item">
+        <a href="https://t.me/gonilas" target="_blank" class="contact-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
           <span>Telegram</span>
         </a>
-
-        <a href="https://wa.me/79113430063" target="_blank" rel="noopener" class="contact-item">
+        <a href="https://wa.me/79113430063" target="_blank" class="contact-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           <span>WhatsApp</span>
         </a>
-
         <div id="openWeChat" class="contact-item full center-content">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M8.6 3C4 3 .2 6.1.2 9.8c0 2.1 1.1 4 2.9 5.3-.2.8-.5 1.7-.5 1.7s.9-.3 2.1-.9c1.2.4 2.5.6 3.9.6 4.6 0 8.4-3.1 8.4-6.8S13.2 3 8.6 3zm-2.1 4.5c.6 0 1.1.5 1.1 1.1 0 .6-.5 1.1-1.1 1.1-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1zm4.4 0c.6 0 1.1.5 1.1 1.1 0 .6-.5 1.1-1.1 1.1-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1zm5.9 3.7c-4.1 0-7.4 2.7-7.4 6 0 1.8.9 3.4 2.5 4.6-.2.7-.4 1.4-.4 1.4s.8-.3 1.8-.8c1 .3 2.1.5 3.5.5 4.1 0 7.4-2.7 7.4-6s-3.3-6-7.4-6zm-1.8 3.9c.5 0 .9.4.9.9 0 .5-.4.9-.9.9-.5 0-.9-.4-.9-.9 0-.5.4-.9.9-.9zm3.8 0c.5 0 .9.4.9.9 0 .5-.4.9-.9.9-.5 0-.9-.4-.9-.9 0-.5.4-.9.9-.9z"/>
           </svg>
           <span>WeChat &middot; dani_published</span>
         </div>
-
       </div>
     </div>
   </section>
@@ -405,29 +348,19 @@
 
     wechatBtn.addEventListener('click', openModal);
     closeBtn.addEventListener('click', closeModal);
-    
-    wechatModal.addEventListener('click', function(e) {
-      if (!wechatCard.contains(e.target)) {
-        closeModal();
-      }
-    });
+    wechatModal.addEventListener('click', (e) => { if (!wechatCard.contains(e.target)) closeModal(); });
 
     window.addEventListener('DOMContentLoaded', () => {
       const img = new Image();
       img.onload = () => {
         const canvas = document.createElement('canvas');
-        canvas.width = img.width;
-        canvas.height = img.height;
+        canvas.width = img.width; canvas.height = img.height;
         const ctx = canvas.getContext('2d');
-        
         ctx.beginPath();
         ctx.arc(canvas.width / 2, canvas.height / 2, Math.min(canvas.width, canvas.height) / 2, 0, Math.PI * 2);
-        ctx.clip();
-        ctx.drawImage(img, 0, 0);
-        
+        ctx.clip(); ctx.drawImage(img, 0, 0);
         const link = document.getElementById('favicon');
-        link.type = 'image/png';
-        link.href = canvas.toDataURL('image/png');
+        link.type = 'image/png'; link.href = canvas.toDataURL('image/png');
       };
       img.src = 'profile.jpg';
     });
