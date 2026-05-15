@@ -3,14 +3,13 @@
 # DANIL FILIPPOV
 ### Construction Engineer | Project Manager
 
+Professional engineer with a Master’s degree in Civil Engineering and a background in large-scale infrastructure and nuclear power projects.
+
+<a href="https://gonilas.github.io/CV/">
+  <img src="https://img.shields.io/badge/DIGITAL%20BUSINESS%20CARD-1F4E79?style=for-the-badge" width="400">
+</a>
+
 [![Status](https://img.shields.io/badge/Status-Open%20to%20Opportunities-2BAE66?style=flat-square)](#)
-[![Location](https://img.shields.io/badge/Location-China-1F4E79?style=flat-square)](#)
-
----
-
-Professional engineer with a Master’s degree in Civil Engineering and a background in large-scale infrastructure and nuclear power projects. Currently based in China and open to international collaboration or short-term technical opportunities.
-
-[**Explore Digital Business Card**](https://gonilas.github.io/CV/)
 
 ---
 
