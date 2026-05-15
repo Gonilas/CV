@@ -38,10 +38,14 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
-    html { 
-      scroll-behavior: smooth; 
-      -webkit-text-size-adjust: 100%;
-      background-color: var(--navy-deep); 
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Отключает прокрутку всей страницы */
+      display: flex;
+      flex-direction: column;
+      background-color: var(--navy-deep); /* Цвет для зон overscroll */
     }
 
     body {
@@ -49,19 +53,20 @@
       font-size: 15px;
       line-height: 1.5;
       color: var(--text);
-      background: transparent; 
+      background: var(--bg);
+      height: 100dvh; /* Динамическая высота для мобильных */
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      min-height: 100vh;
     }
 
-    .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 20px; width: 100%; }
 
     /* ============ HERO ============ */
     .hero {
-      padding: 24px 0 18px;
+      padding: 20px 0 10px;
       background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
       text-align: center;
+      flex-shrink: 0;
     }
     .photo {
       width: 110px;
@@ -145,7 +150,10 @@
 
     /* ============ ABOUT ============ */
     .about {
-      padding: 18px 0;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
       text-align: center;
       background: var(--bg);
     }
@@ -159,9 +167,6 @@
     .about-text p {
       margin-bottom: 12px;
     }
-    .about-text p:last-child {
-      margin-bottom: 0;
-    }
     .highlight-text {
       font-weight: 700;
       color: var(--navy);
@@ -171,7 +176,8 @@
     .contact {
       background: var(--navy);
       color: white;
-      padding: 20px 0 22px;
+      padding: 15px 0 20px;
+      flex-shrink: 0;
     }
     .contact-grid {
       display: grid;
@@ -219,8 +225,9 @@
       background: var(--navy-deep);
       color: rgba(255,255,255,0.55);
       text-align: center;
-      padding: 10px 20px calc(10px + env(safe-area-inset-bottom));
+      padding: 8px 20px calc(8px + env(safe-area-inset-bottom));
       font-size: 0.72rem;
+      flex-shrink: 0;
     }
 
     /* ============ WECHAT MODAL ============ */
@@ -286,26 +293,21 @@
       font-size: 0.9rem;
     }
 
-    /* ============ DESKTOP TWEAKS ============ */
+    /* ============ RESPONSIVE TWEAKS ============ */
     @media (min-width: 720px) {
-      .hero { padding: 56px 0 40px; }
-      .photo { width: 150px; height: 150px; margin-bottom: 20px; }
+      .hero { padding: 40px 0 20px; }
+      .photo { width: 140px; height: 140px; margin-bottom: 20px; }
       .hero h1 { font-size: 2.2rem; }
-      .subtitle { font-size: 1.1rem; }
-      .tagline { font-size: 0.95rem; }
-      .about { padding: 36px 0; }
-      .about-text { font-size: 1.05rem; line-height: 1.7; }
-      .contact { padding: 40px 0 44px; }
-      .contact-grid { grid-template-columns: 1fr 1fr; max-width: 600px; margin: 0 auto; }
-      .contact-item { padding: 14px 16px; font-size: 0.92rem; }
-      .contact-item svg { width: 18px; height: 18px; }
+      .contact-grid { max-width: 600px; margin: 0 auto; }
     }
 
-    @media (max-width: 360px) {
-      .hero h1 { font-size: 1.4rem; }
-      .photo { width: 96px; height: 96px; }
-      .contact-item { font-size: 0.78rem; padding: 10px; gap: 8px; }
-      .contact-item svg { width: 14px; height: 14px; }
+    @media (max-height: 700px) {
+      .photo { width: 80px; height: 80px; }
+      .hero h1 { font-size: 1.3rem; }
+      .contact-grid { gap: 4px; }
+      .contact-item { padding: 8px 10px; }
+      .tagline { margin-bottom: 8px; }
+      .badge { margin-bottom: 8px; }
     }
   </style>
 </head>
