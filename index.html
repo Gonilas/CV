@@ -1,493 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filippov Danil - Civil Engineer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Danil Filippov</title>
+  <meta name="description" content="Engineer from Russia, currently in China. Open to short-term opportunities.">
+  <meta property="og:title" content="Danil Filippov">
+  <meta property="og:description" content="Engineer from Russia, currently in China. Open to short-term opportunities.">
+  <meta property="og:image" content="https://gonilas.github.io/CV/profile.jpg">
+  <link rel="icon" type="image/jpeg" href="profile.jpg">
 
-        html, body {
-            height: 100%;
-        }
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/inter@latest/400.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/inter@latest/500.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/inter@latest/600.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/inter@latest/700.css">
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 16px;
-            min-height: 100vh;
-        }
+  <style>
+    :root {
+      --navy: #1F4E79;
+      --navy-deep: #163659;
+      --navy-pale: #E8F0F9;
+      --text: #1A1A1A;
+      --text-muted: #595959;
+      --border: #E5E5E5;
+      --bg: #FFFFFF;
+      --bg-soft: #F7F8FB;
+      --green: #2BAE66;
+      --radius: 10px;
+      --radius-sm: 8px;
+      --shadow-md: 0 4px 16px rgba(31, 78, 121, 0.08);
+      --shadow-lg: 0 12px 40px rgba(31, 78, 121, 0.12);
+    }
 
-        .card {
-            background: #ffffff;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 420px;
-            width: 100%;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
-            padding: 48px 32px 40px;
-            text-align: center;
-            color: white;
-        }
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-        .profile-pic {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 0 auto 24px;
-            border: 5px solid white;
-            overflow: hidden;
-            background: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
 
-        .profile-pic img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    /* ============ HERO ============ */
+    .hero {
+      padding: 24px 0 18px;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+      text-align: center;
+    }
+    .photo {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: var(--shadow-lg);
+      border: 3px solid #fff;
+      display: block;
+      margin: 0 auto 14px;
+    }
+    .hero h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--navy);
+      margin-bottom: 6px;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+    .subtitle {
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .tagline {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-bottom: 14px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: rgba(43, 174, 102, 0.1);
+      color: var(--green);
+      margin-bottom: 14px;
+    }
+    .badge::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 3px rgba(43, 174, 102, 0.2);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: background 0.15s, box-shadow 0.15s, transform 0.15s;
+      font-family: inherit;
+      background: var(--navy);
+      color: white;
+      box-shadow: var(--shadow-md);
+    }
+    .btn:hover { background: var(--navy-deep); box-shadow: var(--shadow-lg); }
+    .btn:active { transform: translateY(1px); }
+    .btn svg { width: 17px; height: 17px; }
 
-        h1 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 4px;
-            letter-spacing: -0.5px;
-        }
+    /* ============ ABOUT ============ */
+    .about {
+      padding: 18px 0;
+      text-align: center;
+    }
+    .about-text {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text);
+      max-width: 520px;
+      margin: 0 auto;
+    }
 
-        .title {
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            opacity: 0.95;
-            tracking: 0.05em;
-        }
+    /* ============ CONTACT ============ */
+    .contact {
+      background: var(--navy);
+      color: white;
+      padding: 20px 0 22px;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 12px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: var(--radius-sm);
+      color: white;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: background 0.15s, border-color 0.15s;
+      min-width: 0;
+    }
+    .contact-item:hover {
+      background: rgba(255,255,255,0.13);
+      border-color: rgba(255,255,255,0.25);
+    }
+    .contact-item svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      stroke: rgba(255,255,255,0.85);
+    }
+    .contact-item span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .contact-item.full { grid-column: 1 / -1; }
 
-        /* Content */
-        .content {
-            padding: 32px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 28px;
-        }
+    /* ============ FOOTER ============ */
+    footer {
+      background: var(--navy-deep);
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 10px 20px calc(10px + env(safe-area-inset-bottom));
+      font-size: 0.72rem;
+    }
 
-        /* Section */
-        .section {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+    /* ============ DESKTOP TWEAKS ============ */
+    @media (min-width: 720px) {
+      .hero { padding: 56px 0 40px; }
+      .photo { width: 150px; height: 150px; margin-bottom: 20px; }
+      .hero h1 { font-size: 2.2rem; }
+      .subtitle { font-size: 1.1rem; }
+      .tagline { font-size: 0.95rem; }
+      .about { padding: 36px 0; }
+      .about-text { font-size: 1.05rem; line-height: 1.7; }
+      .contact { padding: 40px 0 44px; }
+      .contact-grid { grid-template-columns: 1fr 1fr; max-width: 600px; margin: 0 auto; }
+      .contact-item { padding: 14px 16px; font-size: 0.92rem; }
+      .contact-item svg { width: 18px; height: 18px; }
+    }
 
-        .section-title {
-            font-size: 10px;
-            font-weight: 700;
-            color: #3b82f6;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Contact Items */
-        .contact-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            background: #f8fafc;
-            border-radius: 10px;
-            text-decoration: none;
-            color: #1e293b;
-            transition: all 0.25s ease;
-            border: 1px solid #e2e8f0;
-        }
-
-        .contact-item:hover {
-            background: #eff6ff;
-            border-color: #3b82f6;
-            transform: translateX(4px);
-        }
-
-        .contact-icon {
-            font-size: 20px;
-            min-width: 24px;
-            text-align: center;
-        }
-
-        .contact-text {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            flex: 1;
-        }
-
-        .contact-label {
-            font-size: 10px;
-            color: #64748b;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .contact-value {
-            font-size: 13px;
-            color: #1e293b;
-            font-weight: 500;
-        }
-
-        /* Social Links */
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .social-link {
-            aspect-ratio: 1;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .social-link:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .social-link.linkedin {
-            background: linear-gradient(135deg, #0a66c2 0%, #084a8d 100%);
-            color: white;
-        }
-
-        .social-link.telegram {
-            background: linear-gradient(135deg, #0088cc 0%, #0066aa 100%);
-            color: white;
-        }
-
-        /* WeChat QR */
-        .wechat-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            padding: 20px;
-            background: #f0f9ff;
-            border-radius: 12px;
-            border: 1px solid #bfdbfe;
-        }
-
-        .qr-code {
-            width: 140px;
-            height: 140px;
-            border: 2px solid #3b82f6;
-            border-radius: 8px;
-            padding: 8px;
-            background: white;
-            object-fit: contain;
-        }
-
-        .wechat-id {
-            font-size: 11px;
-            color: #0369a1;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Button */
-        .btn {
-            padding: 13px 24px;
-            background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-size: 12px;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-            text-align: center;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 16px;
-            font-size: 11px;
-            color: #94a3b8;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            animation: fadeIn 0.3s;
-        }
-
-        .modal.show {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 16px;
-            max-width: 95vw;
-            max-height: 95vh;
-            overflow: auto;
-            animation: slideUp 0.3s;
-        }
-
-        .modal-header {
-            padding: 20px;
-            border-bottom: 1px solid #e2e8f0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
-        }
-
-        .modal-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: white;
-        }
-
-        .modal-close {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-        }
-
-        .modal-close:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .modal-body {
-            padding: 20px;
-        }
-
-        .pdf-container {
-            width: 100%;
-            height: 500px;
-        }
-
-        .pdf-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 10px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Mobile */
-        @media (max-width: 500px) {
-            body {
-                padding: 12px;
-            }
-
-            .header {
-                padding: 40px 24px 32px;
-            }
-
-            .profile-pic {
-                width: 110px;
-                height: 110px;
-                margin-bottom: 16px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            .content {
-                padding: 24px;
-                gap: 20px;
-            }
-
-            .contact-item {
-                padding: 10px;
-            }
-
-            .contact-value {
-                font-size: 12px;
-            }
-
-            .qr-code {
-                width: 130px;
-                height: 130px;
-            }
-
-            .pdf-container {
-                height: 400px;
-            }
-        }
-    </style>
+    /* ============ VERY SMALL SCREENS ============ */
+    @media (max-width: 360px) {
+      .hero h1 { font-size: 1.4rem; }
+      .photo { width: 96px; height: 96px; }
+      .contact-item { font-size: 0.78rem; padding: 10px; gap: 8px; }
+      .contact-item svg { width: 14px; height: 14px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="card">
-        <div class="header">
-            <div class="profile-pic">
-                <img src="profile.jpg" alt="Filippov Danil" />
-            </div>
-            <h1>Filippov Danil</h1>
-            <p class="title">Civil Engineer</p>
-        </div>
 
-        <div class="content">
-            <!-- Contact Section -->
-            <section class="section">
-                <div class="section-title">📋 Contact</div>
-                <div class="contact-list">
-                    <a href="mailto:gonilas@gmail.com" class="contact-item">
-                        <span class="contact-icon">✉️</span>
-                        <div class="contact-text">
-                            <span class="contact-label">Email</span>
-                            <span class="contact-value">gonilas@gmail.com</span>
-                        </div>
-                    </a>
-                    <a href="tel:+8615063370375" class="contact-item">
-                        <span class="contact-icon">📱</span>
-                        <div class="contact-text">
-                            <span class="contact-label">Phone / WeChat</span>
-                            <span class="contact-value">+86 150 6337 0375</span>
-                        </div>
-                    </a>
-                    <a href="https://wa.me/79113430063" class="contact-item">
-                        <span class="contact-icon">💬</span>
-                        <div class="contact-text">
-                            <span class="contact-label">Telegram / WhatsApp</span>
-                            <span class="contact-value">+7 911 343 0063</span>
-                        </div>
-                    </a>
-                </div>
-            </section>
-
-            <!-- Social Section -->
-            <section class="section">
-                <div class="section-title">🔗 Connect</div>
-                <div class="social-grid">
-                    <a href="https://www.linkedin.com/in/filippovds/" target="_blank" class="social-link linkedin">LinkedIn</a>
-                    <a href="https://t.me/dani_published" target="_blank" class="social-link telegram">Telegram</a>
-                </div>
-            </section>
-
-            <!-- WeChat QR -->
-            <section class="section">
-                <div class="wechat-section">
-                    <img src="wechat-qr.jpg" alt="WeChat QR Code" class="qr-code" />
-                    <span class="wechat-id">ID: dani_published</span>
-                </div>
-            </section>
-
-            <!-- Resume Button -->
-            <button onclick="openResumeModal()" class="btn">📄 View Resume</button>
-        </div>
-
-        <div class="footer">
-            Built with ❤️ using GitHub Pages
-        </div>
+  <section class="hero">
+    <div class="container">
+      <img src="profile.jpg" alt="Danil Filippov" class="photo">
+      <h1>Danil Filippov</h1>
+      <div class="subtitle">Construction Engineer</div>
+      <div class="tagline">Reinforced Concrete<br>Nuclear &amp; Infrastructure Projects</div>
+      <span class="badge">Open to international opportunities</span>
+      <div>
+        <a href="Filippov_Danil_Resume.pdf" class="btn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+          </svg>
+          View professional resume
+        </a>
+      </div>
     </div>
+  </section>
 
-    <!-- Resume Modal -->
-    <div id="resumeModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="modal-title">Resume</span>
-                <button class="modal-close" onclick="closeResumeModal()">✕</button>
-            </div>
-            <div class="modal-body">
-                <div class="pdf-container">
-                    <iframe src="https://docs.google.com/gviz/secure/176ca8e8wvl2d85_/Filippov_Danil_Resume.pdf"></iframe>
-                </div>
-            </div>
-        </div>
+  <section class="about">
+    <div class="container">
+      <p class="about-text">
+        Hi! I'm Danil, originally from Russia, currently in China and exploring what's next. My background mixes engineering, hands-on technical work, and big international projects. Open to any short-term opportunity.
+      </p>
     </div>
+  </section>
 
-    <script>
-        function openResumeModal() {
-            document.getElementById('resumeModal').classList.add('show');
-        }
+  <section class="contact">
+    <div class="container">
+      <div class="contact-grid">
 
-        function closeResumeModal() {
-            document.getElementById('resumeModal').classList.remove('show');
-        }
+        <a href="mailto:Gonilas@gmail.com" class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>Gonilas@gmail.com</span>
+        </a>
 
-        window.onclick = function(event) {
-            const modal = document.getElementById('resumeModal');
-            if (event.target == modal) {
-                closeResumeModal();
-            }
-        }
-    </script>
+        <a href="tel:+8615063370375" class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>+86 150 6337 0375</span>
+        </a>
+
+        <a href="https://wa.me/79113430063" target="_blank" rel="noopener" class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <span>+7 911 343 00 63</span>
+        </a>
+
+        <a href="https://www.linkedin.com/in/filippovds/" target="_blank" rel="noopener" class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <span>in/filippovds</span>
+        </a>
+
+        <a href="https://t.me/gonilas" target="_blank" rel="noopener" class="contact-item full">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          <span>Telegram &middot; @gonilas</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Danil Filippov</footer>
+
 </body>
 </html>
