@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <!-- Тег для окрашивания панели браузера (Safari iOS, Chrome Android) -->
+  <meta name="theme-color" content="#163659">
+  
   <title>Danil Filippov</title>
   <meta name="description" content="Engineer from Russia, currently in China. Open to short-term opportunities.">
   <meta property="og:title" content="Danil Filippov">
@@ -35,7 +38,6 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
-    /* Делаем фон html темным для красивого нижнего overscroll */
     html { 
       scroll-behavior: smooth; 
       -webkit-text-size-adjust: 100%;
@@ -47,7 +49,7 @@
       font-size: 15px;
       line-height: 1.5;
       color: var(--text);
-      background: var(--bg); /* Белый фон для основной части страницы */
+      background: transparent; 
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       min-height: 100vh;
@@ -113,7 +115,6 @@
       box-shadow: 0 0 0 3px rgba(43, 174, 102, 0.2);
     }
     
-    /* Блок кнопок вверху */
     .hero-buttons {
       display: flex;
       gap: 12px;
@@ -146,6 +147,7 @@
     .about {
       padding: 18px 0;
       text-align: center;
+      background: var(--bg);
     }
     .about-text {
       font-size: 0.95rem;
@@ -208,7 +210,6 @@
     }
     .contact-item.full { grid-column: 1 / -1; }
     
-    /* Спец-стиль для WeChat кнопки по центру */
     .contact-item.center-content {
       justify-content: center;
     }
@@ -227,7 +228,7 @@
       display: none;
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(22, 54, 89, 0.85); /* Полупрозрачный navy-deep */
+      background: rgba(22, 54, 89, 0.85); 
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
       z-index: 1000;
@@ -392,7 +393,6 @@
   </div>
 
   <script>
-    // Логика для открытия/закрытия модального окна WeChat
     const wechatBtn = document.getElementById('openWeChat');
     const wechatModal = document.getElementById('wechatModal');
     const closeBtn = document.getElementById('closeWeChat');
@@ -404,14 +404,12 @@
     wechatBtn.addEventListener('click', openModal);
     closeBtn.addEventListener('click', closeModal);
     
-    // Закрытие при клике на темный фон вне белой карточки
     wechatModal.addEventListener('click', function(e) {
       if (!wechatCard.contains(e.target)) {
         closeModal();
       }
     });
 
-    // JavaScript для создания круглой иконки вкладки из квадратной
     window.addEventListener('DOMContentLoaded', () => {
       const img = new Image();
       img.onload = () => {
