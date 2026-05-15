@@ -1,7 +1,6 @@
 <div align="center">
 
 # DANIL FILIPPOV
-## Construction Engineer | Project Manager
 
 Professional engineer with a Master's degree in Civil Engineering.
 
