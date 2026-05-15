@@ -8,7 +8,7 @@
   <meta property="og:title" content="Danil Filippov">
   <meta property="og:description" content="Engineer from Russia, currently in China. Open to short-term opportunities.">
   <meta property="og:image" content="https://gonilas.github.io/CV/profile.jpg">
-  <link rel="icon" type="image/jpeg" href="profile.jpg">
+  <link rel="icon" type="image/jpeg" id="favicon" href="profile.jpg">
 
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/inter@latest/400.css">
@@ -34,16 +34,23 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    
+    /* Делаем фон html темным для красивого нижнего overscroll */
+    html { 
+      scroll-behavior: smooth; 
+      -webkit-text-size-adjust: 100%;
+      background-color: var(--navy-deep); 
+    }
 
     body {
       font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
       font-size: 15px;
       line-height: 1.5;
       color: var(--text);
-      background: var(--bg);
+      background: var(--bg); /* Белый фон для основной части страницы */
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
     }
 
     .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
@@ -105,6 +112,15 @@
       background: var(--green);
       box-shadow: 0 0 0 3px rgba(43, 174, 102, 0.2);
     }
+    
+    /* Блок кнопок вверху */
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
     .btn {
       display: inline-flex;
       align-items: center;
@@ -124,7 +140,7 @@
     }
     .btn:hover { background: var(--navy-deep); box-shadow: var(--shadow-lg); }
     .btn:active { transform: translateY(1px); }
-    .btn svg { width: 17px; height: 17px; }
+    .btn svg { width: 18px; height: 18px; }
 
     /* ============ ABOUT ============ */
     .about {
@@ -137,6 +153,12 @@
       color: var(--text);
       max-width: 520px;
       margin: 0 auto;
+    }
+    .about-text p {
+      margin-bottom: 12px;
+    }
+    .about-text p:last-child {
+      margin-bottom: 0;
     }
 
     /* ============ CONTACT ============ */
@@ -164,6 +186,7 @@
       font-weight: 500;
       transition: background 0.15s, border-color 0.15s;
       min-width: 0;
+      cursor: pointer;
     }
     .contact-item:hover {
       background: rgba(255,255,255,0.13);
@@ -173,7 +196,6 @@
       width: 16px;
       height: 16px;
       flex-shrink: 0;
-      stroke: rgba(255,255,255,0.85);
     }
     .contact-item span {
       overflow: hidden;
@@ -181,6 +203,11 @@
       white-space: nowrap;
     }
     .contact-item.full { grid-column: 1 / -1; }
+    
+    /* Спец-стиль для WeChat кнопки по центру */
+    .contact-item.center-content {
+      justify-content: center;
+    }
 
     /* ============ FOOTER ============ */
     footer {
@@ -189,6 +216,69 @@
       text-align: center;
       padding: 10px 20px calc(10px + env(safe-area-inset-bottom));
       font-size: 0.72rem;
+    }
+
+    /* ============ WECHAT MODAL ============ */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(22, 54, 89, 0.85); /* Полупрозрачный navy-deep */
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+    .modal-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      padding: 32px 24px;
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      transform: translateY(20px);
+      transition: transform 0.2s ease;
+    }
+    .modal-overlay.active .modal-card {
+      transform: translateY(0);
+    }
+    .close-modal {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-size: 24px;
+      color: #999;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .close-modal:hover { color: #333; }
+    .modal-card img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+    }
+    .modal-card h3 {
+      color: var(--navy);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .modal-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
     }
 
     /* ============ DESKTOP TWEAKS ============ */
@@ -206,7 +296,6 @@
       .contact-item svg { width: 18px; height: 18px; }
     }
 
-    /* ============ VERY SMALL SCREENS ============ */
     @media (max-width: 360px) {
       .hero h1 { font-size: 1.4rem; }
       .photo { width: 96px; height: 96px; }
@@ -224,13 +313,20 @@
       <div class="subtitle">Construction Engineer</div>
       <div class="tagline">Reinforced Concrete<br>Nuclear &amp; Infrastructure Projects</div>
       <span class="badge">Open to international opportunities</span>
-      <div>
+      
+      <div class="hero-buttons">
         <a href="Filippov_Danil_Resume.pdf" class="btn" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
             <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
           </svg>
-          View professional resume
+          View resume
+        </a>
+        <a href="https://www.linkedin.com/in/filippovds/" class="btn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+          LinkedIn
         </a>
       </div>
     </div>
@@ -238,10 +334,10 @@
 
   <section class="about">
     <div class="container">
-      <p class="about-text">
-        Originally from Russia, currently in China. Exploring what's next.
-        My background mixes engineering, hands-on technical work, and big international projects. Open to any short-term opportunity.
-      </p>
+      <div class="about-text">
+        <p>Originally from Russia, currently in China and exploring what's next.</p>
+        <p>My background mixes engineering, hands-on technical work, and big international projects. Open to any short-term opportunity.</p>
+      </div>
     </div>
   </section>
 
@@ -250,29 +346,31 @@
       <div class="contact-grid">
 
         <a href="mailto:Gonilas@gmail.com" class="contact-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           <span>Gonilas@gmail.com</span>
         </a>
 
         <a href="tel:+8615063370375" class="contact-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           <span>+86 150 6337 0375</span>
         </a>
 
+        <a href="https://t.me/gonilas" target="_blank" rel="noopener" class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          <span>Telegram</span>
+        </a>
+
         <a href="https://wa.me/79113430063" target="_blank" rel="noopener" class="contact-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-          <span>+7 911 343 00 63</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <span>WhatsApp</span>
         </a>
 
-        <a href="https://www.linkedin.com/in/filippovds/" target="_blank" rel="noopener" class="contact-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          <span>in/filippovds</span>
-        </a>
-
-        <a href="https://t.me/gonilas" target="_blank" rel="noopener" class="contact-item full">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-          <span>Telegram &middot; @gonilas</span>
-        </a>
+        <div id="openWeChat" class="contact-item full center-content">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8.6 3C4 3 .2 6.1.2 9.8c0 2.1 1.1 4 2.9 5.3-.2.8-.5 1.7-.5 1.7s.9-.3 2.1-.9c1.2.4 2.5.6 3.9.6 4.6 0 8.4-3.1 8.4-6.8S13.2 3 8.6 3zm-2.1 4.5c.6 0 1.1.5 1.1 1.1 0 .6-.5 1.1-1.1 1.1-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1zm4.4 0c.6 0 1.1.5 1.1 1.1 0 .6-.5 1.1-1.1 1.1-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1zm5.9 3.7c-4.1 0-7.4 2.7-7.4 6 0 1.8.9 3.4 2.5 4.6-.2.7-.4 1.4-.4 1.4s.8-.3 1.8-.8c1 .3 2.1.5 3.5.5 4.1 0 7.4-2.7 7.4-6s-3.3-6-7.4-6zm-1.8 3.9c.5 0 .9.4.9.9 0 .5-.4.9-.9.9-.5 0-.9-.4-.9-.9 0-.5.4-.9.9-.9zm3.8 0c.5 0 .9.4.9.9 0 .5-.4.9-.9.9-.5 0-.9-.4-.9-.9 0-.5.4-.9.9-.9z"/>
+          </svg>
+          <span>WeChat &middot; dani_published</span>
+        </div>
 
       </div>
     </div>
@@ -280,5 +378,55 @@
 
   <footer>© 2026 Danil Filippov</footer>
 
+  <div id="wechatModal" class="modal-overlay">
+    <div class="modal-card" id="wechatCard">
+      <span class="close-modal" id="closeWeChat">&times;</span>
+      <img src="wechat-qr.jpg" alt="WeChat QR Code">
+      <h3>WECHAT</h3>
+      <p>Scan to add me &middot; ID: dani_published</p>
+    </div>
+  </div>
+
+  <script>
+    // Логика для открытия/закрытия модального окна WeChat
+    const wechatBtn = document.getElementById('openWeChat');
+    const wechatModal = document.getElementById('wechatModal');
+    const closeBtn = document.getElementById('closeWeChat');
+    const wechatCard = document.getElementById('wechatCard');
+
+    function openModal() { wechatModal.classList.add('active'); }
+    function closeModal() { wechatModal.classList.remove('active'); }
+
+    wechatBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    
+    // Закрытие при клике на темный фон вне белой карточки
+    wechatModal.addEventListener('click', function(e) {
+      if (!wechatCard.contains(e.target)) {
+        closeModal();
+      }
+    });
+
+    // JavaScript для создания круглой иконки вкладки из квадратной
+    window.addEventListener('DOMContentLoaded', () => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        
+        ctx.beginPath();
+        ctx.arc(canvas.width / 2, canvas.height / 2, Math.min(canvas.width, canvas.height) / 2, 0, Math.PI * 2);
+        ctx.clip();
+        ctx.drawImage(img, 0, 0);
+        
+        const link = document.getElementById('favicon');
+        link.type = 'image/png';
+        link.href = canvas.toDataURL('image/png');
+      };
+      img.src = 'profile.jpg';
+    });
+  </script>
 </body>
 </html>
