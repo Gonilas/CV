@@ -5,26 +5,17 @@
 ### Construction Engineer
 
 Construction engineer with a background in large-scale infrastructure and nuclear power projects.
-
-[![Status](https://img.shields.io/badge/Status-Open%20to%20Opportunities-2BAE66?style=flat-square)](#)
-
-<br>
-
-<a href="https://gonilas.github.io/CV/">
-  <img src="./preview.png" alt="Digital business card preview" width="280">
-</a>
-
 <br><br>
-
 <a href="https://gonilas.github.io/CV/">
-  <img src="https://img.shields.io/badge/Visit%20Digital%20Card-1F4E79?style=for-the-badge" alt="Visit Digital Card">
+  <img src="https://img.shields.io/badge/Visit%20Digital%20Card-1F4E79?style=for-the-badge" width="300" alt="Visit Digital Card">
 </a>
-
 <br>
 
 [![Resume PDF](https://img.shields.io/badge/Resume-PDF-1F4E79?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](./Filippov_Danil_Resume.pdf)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/filippovds/)
 [![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:Gonilas@gmail.com)
+
+[![Status](https://img.shields.io/badge/Status-Open%20to%20Opportunities-2BAE66?style=flat-square)](#)
 
 ---
 
