@@ -68,6 +68,16 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
+    /* Хак для Safari: заливаем зону "челки" телефона нужным цветом */
+    body::before {
+      content: "";
+      display: block;
+      width: 100%;
+      /* На iPhone это займет высоту статус-бара. На других устройствах - 4px */
+      height: env(safe-area-inset-top, 4px); 
+      background-color: var(--navy-deep);
+      flex-shrink: 0;
+    }
 
     .container { max-width: 720px; margin: 0 auto; padding: 0 20px; width: 100%; }
 
@@ -77,7 +87,6 @@
       background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
       text-align: center;
       flex-shrink: 0;
-      border-top: 2px solid var(--navy-deep);         /* Добавлен 1px бордюр цвета navy-deep сверху для Safari Tint */
     }
     .photo {
       width: 104px;
