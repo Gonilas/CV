@@ -58,7 +58,7 @@
       font-size: 15px;
       line-height: 1.5;
       color: var(--text);
-      background: var(--bg);
+      background: var(--navy-deep);
       height: 100vh;            /* fallback for older browsers */
       height: 100dvh;           /* preferred: respects mobile UI bars */
       overflow: hidden;
@@ -67,16 +67,7 @@
       flex-direction: column;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-    }
-    /* Хак для Safari: заливаем зону "челки" телефона нужным цветом */
-    body::before {
-      content: "";
-      display: block;
-      width: 100%;
-      /* На iPhone это займет высоту статус-бара. На других устройствах - 4px */
-      height: env(safe-area-inset-top, 4px); 
-      background-color: var(--navy-deep);
-      flex-shrink: 0;
+      padding-top: env(safe-area-inset-top, 0px);
     }
 
     .container { max-width: 720px; margin: 0 auto; padding: 0 20px; width: 100%; }
