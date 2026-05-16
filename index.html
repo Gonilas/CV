@@ -18,7 +18,7 @@
   <meta property="og:description" content="Engineer from Russia, currently in China. Open to short-term opportunities.">
   <meta property="og:image" content="https://gonilas.github.io/CV/profile.png">
 
-  <link rel="icon" type="image/jpeg" id="favicon" href="profile.png">
+  <link rel="icon" type="image/png" href="profile.png" sizes="32x32">
   <link rel="apple-touch-icon" href="profile.png">
 
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -416,7 +416,7 @@
   <div id="wechatModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="wechatTitle">
     <div class="modal-card" id="wechatCard">
       <button class="close-modal" id="closeWeChat" type="button" aria-label="Close">&times;</button>
-      <img src="wechat-qr.jpg" alt="WeChat QR Code">
+      <img src="wechat-qr.jpg alt="WeChat QR Code">
       <h3 id="wechatTitle">WECHAT</h3>
       <p>Add me &middot; ID: dani_published</p>
     </div>
@@ -441,29 +441,6 @@
       // Esc closes modal (desktop convenience)
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && wechatModal.classList.contains('active')) closeModal();
-      });
-
-      // Round favicon via canvas — gracefully fail if canvas is tainted
-      window.addEventListener('DOMContentLoaded', function () {
-        try {
-          var img = new Image();
-          img.onload = function () {
-            try {
-              var canvas = document.createElement('canvas');
-              canvas.width = img.width;
-              canvas.height = img.height;
-              var ctx = canvas.getContext('2d');
-              ctx.beginPath();
-              ctx.arc(canvas.width / 2, canvas.height / 2, Math.min(canvas.width, canvas.height) / 2, 0, Math.PI * 2);
-              ctx.clip();
-              ctx.drawImage(img, 0, 0);
-              var link = document.getElementById('favicon');
-              link.type = 'image/png';
-              link.href = canvas.toDataURL('image/png');
-            } catch (e) { /* canvas tainted — fall back to original square favicon */ }
-          };
-          img.src = 'profile.png';
-        } catch (e) { /* image load failed — favicon stays as-is */ }
       });
     })();
   </script>
