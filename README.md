@@ -40,7 +40,7 @@ A self-hosted digital business card, built with vanilla HTML/CSS and deployed on
 ```
 .
 ├── index.html                    # Single-page digital business card
-├── profile.jpg                   # Profile photo (used as favicon and avatar)
+├── profile.jpg                   # Profile photo (favicon and avatar)
 ├── wechat-qr.jpg                 # WeChat QR for in-modal display
 ├── Filippov_Danil_Resume.pdf     # Downloadable resume
 ├── preview.png                   # README preview screenshot
