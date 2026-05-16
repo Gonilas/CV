@@ -1,28 +1,31 @@
-<div align="center">
+name: Update README date
 
-# DANIL FILIPPOV
-### Construction Engineer | Project Manager
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'README.md'
+      - '.github/**'
 
-Professional engineer with a Master’s degree in Civil Engineering and a background in large-scale infrastructure and nuclear power projects.
+permissions:
+  contents: write
 
-<a href="https://gonilas.github.io/CV/">
-  <img src="https://img.shields.io/badge/DIGITAL%20BUSINESS%20CARD-1F4E79?style=for-the-badge" width="400">
-</a>
+jobs:
+  update-date:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-[![Status](https://img.shields.io/badge/Status-Open%20to%20Opportunities-2BAE66?style=flat-square)](#)
+      - name: Update last-updated marker
+        run: |
+          DATE=$(date -u +"%B %Y")
+          sed -i "s|<!-- LAST-UPDATED -->.*<!-- /LAST-UPDATED -->|<!-- LAST-UPDATED -->${DATE}<!-- /LAST-UPDATED -->|" README.md
 
----
-
-</div>
-
-### 🏗️ Core Expertise
-* **Civil Engineering:** Expertise in reinforced concrete structures and complex infrastructure.
-* **Nuclear & Industrial Projects:** Proven track record in the construction and coordination of high-security industrial facilities.
-* **Sustainable Tech:** Strong professional interest in Sustainable Construction and energy-efficient building methods.
-* **Power Systems & Maintenance:** Certified electrician with specialized experience in the maintenance of electrical substations.
-
----
-
-<div align="center">
-  <i>Focused on engineering precision and sustainable development</i>
-</div>
+      - name: Commit & push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --staged --quiet || (git commit -m "chore: auto-update README date" && git push)
