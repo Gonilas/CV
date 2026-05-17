@@ -78,6 +78,7 @@
       background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
       text-align: center;
       flex-shrink: 0;
+      position: relative;
     }
     .photo {
       width: 104px;
@@ -104,6 +105,16 @@
       line-height: 1.1;
       text-transform: uppercase;
     }
+    .name-zh {
+      display: none;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-top: -2px;
+      margin-bottom: 6px;
+      letter-spacing: 0.05em;
+    }
+    html[lang^="zh"] .name-zh { display: block; }
     .subtitle {
       font-size: 0.95rem;
       color: var(--text);
@@ -319,18 +330,60 @@
 
     /* Tap highlight cleanup on iOS */
     a, button { -webkit-tap-highlight-color: rgba(31, 78, 121, 0.15); }
+
+    /* ============ LANGUAGE TOGGLE ============ */
+    .lang-toggle {
+      position: absolute;
+      top: calc(12px + env(safe-area-inset-top));
+      right: 16px;
+      display: inline-flex;
+      gap: 1px;
+      background: rgba(31, 78, 121, 0.08);
+      border-radius: 999px;
+      padding: 3px;
+      z-index: 10;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .lang-toggle button {
+      font-family: inherit;
+      border: none;
+      background: transparent;
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      min-width: 28px;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+    }
+    .lang-toggle button.active {
+      background: var(--navy);
+      color: white;
+    }
+    .lang-toggle button:not(.active):hover {
+      color: var(--text);
+    }
   </style>
 </head>
 <body>
 
   <section class="hero">
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="zh" aria-pressed="false" lang="zh">中</button>
+    </div>
     <div class="container">
       <img src="profile.png" alt="Danil Filippov" class="photo">
-      <div class="greeting">Hi! I'm</div>
+      <div class="greeting" data-en="Hi! I'm" data-zh="您好，我叫">Hi! I'm</div>
       <h1>Danil Filippov</h1>
-      <div class="subtitle">Construction Engineer</div>
-      <div class="tagline">Reinforced Concrete<br>Nuclear &amp; Infrastructure Projects</div>
-      <span class="badge">Open to international opportunities</span>
+      <div class="name-zh" lang="zh">达尼尔·菲利普波夫</div>
+      <div class="subtitle" data-en="Construction Engineer" data-zh="建筑工程师">Construction Engineer</div>
+      <div class="tagline" data-en="Reinforced Concrete<br>Nuclear &amp; Infrastructure Projects" data-zh="钢筋混凝土<br>核能与基础设施项目">Reinforced Concrete<br>Nuclear &amp; Infrastructure Projects</div>
+      <span class="badge" data-en="Open to international opportunities" data-zh="寻找国际机会">Open to international opportunities</span>
 
       <div class="hero-buttons">
         <a href="Filippov_Danil_Resume.pdf" class="btn" target="_blank" rel="noopener">
@@ -338,7 +391,7 @@
             <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
             <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
           </svg>
-          View professional resume
+          <span data-en="View professional resume" data-zh="查看简历">View professional resume</span>
         </a>
         <a href="https://www.linkedin.com/in/filippovds/" class="btn btn-icon" target="_blank" rel="noopener" aria-label="LinkedIn profile">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -348,7 +401,7 @@
 
         <a href="https://hk.jobsdb.com/profiles/danil-filippov-FZHyGRxsGV" class="btn btn-icon" target="_blank" rel="noopener" aria-label="JobsDB / SEEK profile">
           <svg viewBox="0 0 96 96" fill="currentColor" aria-hidden="true">
-            <path d="M3 32h2v32H3zm7 0h3v32H10zm8 0h5v32h-5zm10 0h8v32h-8zM40 5l10 10v66L40 91zM52 17l14 14v34L52 79zM67 32l16 16-16 16z"/>
+            <path d="M3 32h2v32h-2z M10 32h3v32h-3z M17 32h5v32h-5z M26 32h8v32h-8z M37 2l12 12v68l-12 12z M51 16l14 14v36l-14 14z M67 32l16 16-16 16z"/>
           </svg>
         </a>
       </div>
@@ -358,7 +411,7 @@
   <section class="about">
     <div class="container">
       <div class="about-text">
-        <p>
+        <p data-en="Originally from Russia, currently in China.<br>My background mixes engineering, hands-on technical work, and big international projects.<br><span class='highlight-text'>Open to any opportunity.</span>" data-zh="来自俄罗斯，现居中国。<br>我的经历涵盖工程、技术实操与大型国际项目。<br><span class='highlight-text'>欢迎任何机会。</span>">
           Originally from Russia, currently in China.<br>
           My background mixes engineering, hands-on technical work, and big international projects.<br>
           <span class="highlight-text">Open to any opportunity.</span>
@@ -438,6 +491,61 @@
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && wechatModal.classList.contains('active')) closeModal();
       });
+    })();
+
+    // ============ LANGUAGE TOGGLE ============
+    (function () {
+      var STORAGE_KEY = 'lang';
+      var SUPPORTED = ['en', 'zh'];
+
+      function applyLang(lang) {
+        if (SUPPORTED.indexOf(lang) === -1) lang = 'en';
+        document.documentElement.lang = (lang === 'zh') ? 'zh-CN' : 'en';
+
+        var nodes = document.querySelectorAll('[data-en]');
+        for (var i = 0; i < nodes.length; i++) {
+          var v = nodes[i].getAttribute('data-' + lang);
+          if (v !== null) nodes[i].innerHTML = v;
+        }
+
+        var buttons = document.querySelectorAll('.lang-toggle button');
+        for (var j = 0; j < buttons.length; j++) {
+          var active = buttons[j].getAttribute('data-lang') === lang;
+          buttons[j].classList.toggle('active', active);
+          buttons[j].setAttribute('aria-pressed', active ? 'true' : 'false');
+        }
+
+        try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+      }
+
+      function detectDefaultLang() {
+        try {
+          var saved = localStorage.getItem(STORAGE_KEY);
+          if (saved && SUPPORTED.indexOf(saved) !== -1) return saved;
+        } catch (e) {}
+        try {
+          var nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+          if (nav.indexOf('zh') === 0) return 'zh';
+        } catch (e) {}
+        return 'en';
+      }
+
+      function init() {
+        applyLang(detectDefaultLang());
+
+        var buttons = document.querySelectorAll('.lang-toggle button');
+        for (var i = 0; i < buttons.length; i++) {
+          buttons[i].addEventListener('click', function (e) {
+            applyLang(e.currentTarget.getAttribute('data-lang'));
+          });
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
     })();
   </script>
 </body>
