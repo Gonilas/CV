@@ -43,7 +43,7 @@ A self-hosted digital business card, built with vanilla HTML/CSS and deployed on
 ├── profile.png                   # Profile photo (favicon and avatar)
 ├── wechat-qr.jpg                 # WeChat QR for in-modal display
 ├── Filippov_Danil_Resume.pdf     # Downloadable resume
-├── preview.png                   # README preview screenshot
+├── manifest.json                 # PWA for "Add to Home Screen"
 └── .github/workflows/            # Auto-updates README date on commit
 ```
 
