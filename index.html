@@ -4,27 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
+  <!-- Browser UI tint (Safari, Chrome Android, Edge, Samsung Internet) -->
   <meta name="theme-color" content="#163659">
 
-  <link rel="manifest" href="manifest.json">
-
+  <!-- iOS standalone (when user "Add to Home Screen") -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Danil CV">
+  <meta name="apple-mobile-web-app-title" content="Danil Filippov">
 
-  <title>Danil Filippov · Construction Engineer</title>
-  <meta name="description" content="Construction Engineer specializing in Reinforced Concrete, Nuclear & Infrastructure Projects. Open to international opportunities.">
-
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://gonilas.github.io/CV/">
-  <meta property="og:title" content="Danil Filippov · Construction Engineer">
-  <meta property="og:description" content="Construction Engineer mixing hands-on technical work and big international projects. Open to opportunities.">
+  <title>Danil Filippov</title>
+  <meta name="description" content="Engineer from Russia, currently in China. Open to short-term opportunities.">
+  <meta property="og:title" content="Danil Filippov">
+  <meta property="og:description" content="Engineer from Russia, currently in China. Open to short-term opportunities.">
   <meta property="og:image" content="https://gonilas.github.io/CV/profile.png">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Danil Filippov · Construction Engineer">
-  <meta name="twitter:description" content="Construction Engineer mixing hands-on technical work and big international projects.">
-  <meta name="twitter:image" content="https://gonilas.github.io/CV/profile.png">
 
   <link rel="icon" type="image/png" href="profile.png" sizes="32x32">
   <link rel="apple-touch-icon" href="profile.png">
@@ -54,7 +46,8 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* Critical: keep <html> scrollable so Safari applies theme-color. */
+    /* Critical: keep <html> scrollable so Safari applies theme-color.
+       Body holds the no-scroll lock instead. */
     html {
       background-color: var(--navy-deep);
       height: 100%;
@@ -66,10 +59,10 @@
       line-height: 1.5;
       color: var(--text);
       background: var(--navy-deep);
-      height: 100vh;            
-      height: 100dvh;           
-      overflow: hidden;
-      overscroll-behavior: none;
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-y: auto;
+      overscroll-behavior-y: none;
       display: flex;
       flex-direction: column;
       -webkit-font-smoothing: antialiased;
@@ -78,23 +71,6 @@
     }
 
     .container { max-width: 720px; margin: 0 auto; padding: 0 20px; width: 100%; }
-
-    /* ============ ANIMATIONS ============ */
-    @keyframes smoothFadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    body > section, body > footer {
-      opacity: 0;
-      animation: smoothFadeIn 0.5s ease-out forwards;
-    }
-    
-    /* Каскадное появление блоков */
-    .hero { animation-delay: 0.05s; }
-    .about { animation-delay: 0.15s; }
-    .contact { animation-delay: 0.25s; }
-    footer { animation-delay: 0.35s; }
 
     /* ============ HERO ============ */
     .hero {
@@ -270,7 +246,7 @@
       background: var(--navy-deep);
       color: rgba(255, 255, 255, 0.55);
       text-align: center;
-      padding: 8px 20px calc(8px + env(safe-area-bottom, 8px));
+      padding: 8px 20px calc(8px + env(safe-area-inset-bottom));
       font-size: 0.72rem;
       flex-shrink: 0;
     }
@@ -327,41 +303,13 @@
       color: var(--navy);
       font-size: 1.05rem;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 6px;
       letter-spacing: 0.05em;
     }
-    
-    /* WeChat Copy ID Wrapper */
-    .wechat-copy-wrap {
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      background: var(--bg-soft);
-      padding: 8px 12px 8px 16px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-    }
-    .wechat-copy-wrap span {
+    .modal-card p {
       color: var(--text-muted);
       font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.02em;
     }
-    .copy-btn {
-      background: var(--navy);
-      color: white;
-      border: none;
-      padding: 6px 14px;
-      border-radius: 8px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-      font-family: inherit;
-    }
-    .copy-btn:hover { background: var(--navy-deep); }
-    .copy-btn.success { background: var(--green); }
 
     /* ============ MEDIA ============ */
     @media (min-width: 720px) {
@@ -450,6 +398,7 @@
             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/>
           </svg>
         </a>
+
         <a href="https://hk.jobsdb.com/profiles/danil-filippov-FZHyGRxsGV" class="btn btn-icon" target="_blank" rel="noopener" aria-label="JobsDB / SEEK profile">
           <svg viewBox="0 0 96 96" fill="currentColor" aria-hidden="true">
             <path d="M3 32h2v32h-2z M10 32h3v32h-3z M17 32h5v32h-5z M26 32h8v32h-8z M37 2l12 12v68l-12 12z M51 16l14 14v36l-14 14z M67 32l16 16-16 16z"/>
@@ -462,10 +411,10 @@
   <section class="about">
     <div class="container">
       <div class="about-text">
-        <p data-en="Originally from Russia, currently in China.<br>My background mixes engineering, hands-on technical work, and big international projects.<br><span class='highlight-text'>Any jobs available? Let's talk</span>" data-zh="来自俄罗斯，现居中国。<br>我的经历涵盖工程、技术实操与大型国际项目。<br><span class='highlight-text'>有工作机会吗？联系我吧。</span>">
+        <p data-en="Originally from Russia, currently in China.<br>My background mixes engineering, hands-on technical work, and big international projects.<br><span class='highlight-text'>Open to any opportunity.</span>" data-zh="来自俄罗斯，现居中国。<br>我的经历涵盖工程、技术实操与大型国际项目。<br><span class='highlight-text'>欢迎任何机会。</span>">
           Originally from Russia, currently in China.<br>
           My background mixes engineering, hands-on technical work, and big international projects.<br>
-          <span class="highlight-text">Any jobs available? Let's talk</span>
+          <span class="highlight-text">Open to any opportunity.</span>
         </p>
       </div>
     </div>
@@ -500,7 +449,8 @@
           </svg>
           <span>WhatsApp</span>
         </a>
-        <button id="openWeChat" class="contact-item full center-content" type="button" aria-label="Show WeChat QR code">
+        <button id="openWeChat" class="contact-item full center-content" type="button"
+                aria-label="Show WeChat QR code">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M8.6 3C4 3 .2 6.1.2 9.8c0 2.1 1.1 4 2.9 5.3-.2.8-.5 1.7-.5 1.7s.9-.3 2.1-.9c1.2.4 2.5.6 3.9.6 4.6 0 8.4-3.1 8.4-6.8S13.2 3 8.6 3zm-2.1 4.5c.6 0 1.1.5 1.1 1.1 0 .6-.5 1.1-1.1 1.1-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1zm4.4 0c.6 0 1.1.5 1.1 1.1 0 .6-.5 1.1-1.1 1.1-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1zm5.9 3.7c-4.1 0-7.4 2.7-7.4 6 0 1.8.9 3.4 2.5 4.6-.2.7-.4 1.4-.4 1.4s.8-.3 1.8-.8c1 .3 2.1.5 3.5.5 4.1 0 7.4-2.7 7.4-6s-3.3-6-7.4-6zm-1.8 3.9c.5 0 .9.4.9.9 0 .5-.4.9-.9.9-.5 0-.9-.4-.9-.9 0-.5.4-.9.9-.9zm3.8 0c.5 0 .9.4.9.9 0 .5-.4.9-.9.9-.5 0-.9-.4-.9-.9 0-.5.4-.9.9-.9z"/>
           </svg>
@@ -517,21 +467,16 @@
       <button class="close-modal" id="closeWeChat" type="button" aria-label="Close">&times;</button>
       <img src="wechat-qr.jpg" alt="WeChat QR Code">
       <h3 id="wechatTitle">WECHAT</h3>
-      <div class="wechat-copy-wrap">
-        <span>ID: dani_published</span>
-        <button type="button" id="copyWechatBtn" class="copy-btn">Copy</button>
-      </div>
+      <p>Add me &middot; ID: dani_published</p>
     </div>
   </div>
 
   <script>
-    // ============ MODAL LOGIC ============
     (function () {
       var wechatBtn = document.getElementById('openWeChat');
       var wechatModal = document.getElementById('wechatModal');
       var closeBtn = document.getElementById('closeWeChat');
       var wechatCard = document.getElementById('wechatCard');
-      var copyWechatBtn = document.getElementById('copyWechatBtn');
 
       function openModal() { wechatModal.classList.add('active'); }
       function closeModal() { wechatModal.classList.remove('active'); }
@@ -542,27 +487,10 @@
         if (!wechatCard.contains(e.target)) closeModal();
       });
 
-      // Esc closes modal
+      // Esc closes modal (desktop convenience)
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && wechatModal.classList.contains('active')) closeModal();
       });
-
-      // Copy WeChat ID Logic
-      if (copyWechatBtn) {
-        copyWechatBtn.addEventListener('click', function() {
-          navigator.clipboard.writeText('dani_published').then(function() {
-            var originalText = copyWechatBtn.innerText;
-            copyWechatBtn.innerText = 'Copied!';
-            copyWechatBtn.classList.add('success');
-            setTimeout(function() {
-              copyWechatBtn.innerText = originalText;
-              copyWechatBtn.classList.remove('success');
-            }, 2000);
-          }).catch(function(err) {
-            console.error('Failed to copy text: ', err);
-          });
-        });
-      }
     })();
 
     // ============ LANGUAGE TOGGLE ============
@@ -620,8 +548,5 @@
       }
     })();
   </script>
-  
-  <script data-goatcounter="https://gonilas.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
