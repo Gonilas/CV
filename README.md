@@ -53,6 +53,6 @@ A self-hosted digital business card, built with vanilla HTML/CSS and deployed on
 
 <div align="center">
 
-<sub>Last updated: <!-- LAST-UPDATED -->May 2026<!-- /LAST-UPDATED --></sub>
+<sub>Last updated: <!-- LAST-UPDATED -->July 2026<!-- /LAST-UPDATED --></sub>
 
 </div>
